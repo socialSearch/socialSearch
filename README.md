@@ -40,7 +40,7 @@ bower install
 
 ### Roadmap
 
-View the project roadmap [here](issues)
+View the project roadmap [here](https://github.com/socialSearch/socialSearch/issues)
 
 
 ## Contributing
