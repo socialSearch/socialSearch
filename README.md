@@ -4,9 +4,9 @@ Beautifully search twitter, instagram, and facebook
 
 ## Team
 
-  Huy Pham
-  Justin Cruz
-  Casey Garland
+  Huy Pham  
+  Justin Cruz  
+  Casey Garland  
 
 ## Table of Contents
 
@@ -40,7 +40,7 @@ bower install
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+View the project roadmap [here](issues)
 
 
 ## Contributing
