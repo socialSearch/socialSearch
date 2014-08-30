@@ -9,7 +9,7 @@ module.exports = function(config) {
     reporters: ['coverage', 'coveralls'],
 
      coverageReporter: {
-    type: 'lcovonly', // lcov or lcovonly are required for generating lcov.info files
+    type: 'lcov', // lcov or lcovonly are required for generating lcov.info files
     dir: '.coverage/'
   },
 
