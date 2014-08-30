@@ -1,4 +1,3 @@
-<script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 <!-- <div ng-include="'components/navbar/navbar.html'"></div> -->
 
   <header class="hero-unit" id="banner">
@@ -21,12 +20,15 @@
   </header>
 
 <div class="cont-media">
-  <div class="tweet-box" ng-repeat="tweet in response.twitter">
+  <div class="tweet-box" ng-repeat="tweet in response.twitter" repeat-done="twttr.widgets.load()">
     <blockquote class="twitter-tweet" data-conversation="none" lang="en">
       <p>{{tweet.text}}</p>
       &mdash; {{tweet.name}} (@{{tweet.user}})
       <a href="{{tweet.link}}"></a>
     </blockquote>
+    <div id="twitter-widget-src">
+      <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
   </div>
 
   <div class="insta-box" ng-repeat="insta in response.instagram">

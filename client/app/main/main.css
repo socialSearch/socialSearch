@@ -38,14 +38,13 @@
     -moz-column-width: 25em;
     -webkit-column-width: 25em;
     -moz-column-gap: -1em;
-    -webkit-column-gap: -1em;  
+    -webkit-column-gap: -1em;
 }
 
-.tweet {
+.tweet-box {
     display: inline-block;
-    margin:  0.25rem;
-    padding:  1rem;
-    width:  100%; 
+    margin:  5px;
+    width : 100%;
 }
 
 .prof-pic {

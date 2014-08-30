@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === 'development'){
 
 var querystring = require('querystring');
 
-
+ 
 var twitterErrorCount = 0;
 var twitterResponse = {};
 var port = process.env.PORT || 3000;
@@ -61,6 +61,7 @@ module.exports = {
 
 getTweets : function(search, callback){
 
+  console.log(search);
   if ( twitterErrorCount > 5 ){
     return;
   }
@@ -96,6 +97,8 @@ getTweets : function(search, callback){
       tweetsResponse.push(tempObj);
     }
 
+    console.log(tweetsResponse);
+
     if (callback){
 
     callback(tweetsResponse);
@@ -109,5 +112,5 @@ getTweets : function(search, callback){
 
 
 
-module.exports.getTweets('dr pepper');
+// module.exports.getTweets('dr pepper');
 
