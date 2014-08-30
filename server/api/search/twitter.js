@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === 'development'){
 
 var querystring = require('querystring');
 
-
+ 
 var twitterErrorCount = 0;
 var twitterResponse = {};
 var port = process.env.PORT || 3000;

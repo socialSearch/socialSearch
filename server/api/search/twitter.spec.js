@@ -17,7 +17,7 @@ describe('Twitter Search', function() {
       done();
     });
 
-  });
+  }); 
 
 
 });

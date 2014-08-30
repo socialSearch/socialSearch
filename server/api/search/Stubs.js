@@ -17,7 +17,7 @@ module.exports = {
       self._ended = true;
       self._data = data;
     };
-  },
+  }, 
 
   request: function(url, method, postdata) {
     this.url = url;
