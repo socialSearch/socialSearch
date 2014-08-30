@@ -109,5 +109,5 @@ getTweets : function(search, callback){
 
 
 
-module.exports.getTweets('dr pepper');
+// module.exports.getTweets('dr pepper');
 
