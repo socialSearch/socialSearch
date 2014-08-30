@@ -4,7 +4,7 @@ var request = require('request');
 var fs = require('fs');
 var bodyParser = require('body-parser');
 var urlencode = require('urlencode');
-if ( !process.env.NODE_ENV){
+if ( process.env.NODE_ENV !== 'production'){
   var config = require('../../config/config.js');
 }
 var querystring = require('querystring');
@@ -13,29 +13,47 @@ var querystring = require('querystring');
 var twitterErrorCount = 0;
 var twitterResponse = {};
 var port = process.env.PORT || 3000;
-// var trendCounter = 0;
-// var trendStop;
-// var trendsObject = {};
-// var trends = [];
 
-
-if ( !process.env.NODE_ENV){
+if ( process.env.NODE_ENV !== 'production'){
   var twitterKey = config.twitterKey;
 }
 else{
   var twitterKey = process.env.TWITTER_KEY;
 }
-console.log(__dirname, 'diranme');
-var foldername = __dirname + '/gif/';
-fs.readdir(foldername, function(err, files){
-  console.log(files);
-});
 
 var searchString = 'dog food'
+var getToken = function(){
 
+  var form = {
+      grant_type: 'client_credentials'
+  };
 
+  var formData = querystring.stringify(form);
+  var contentLength = formData.length;
+if ( process.env.NODE_ENV !== 'production'){
+  var auth =  config.basicAuth;
+}
+else{
+  var auth = process.env.BASIC_AUTH;
+}
 
-var searchTwitter = function(search){
+  request({
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': auth
+      },
+      uri: 'https://api.twitter.com/oauth2/token',
+      body: formData,
+      method: 'POST'
+    }, function (err, res, body) {
+      twitterKey = JSON.parse(body).access_token;
+      console.log(twitterKey);
+    });
+};
+
+module.exports = {
+
+getTweets : function(search, callback){
 
   if ( twitterErrorCount > 5 ){
     return;
@@ -47,7 +65,6 @@ var searchTwitter = function(search){
       }
     };
 
-
   request( options, function (error, response, body){
 
     if (JSON.parse(body).hasOwnProperty('errors')){
@@ -57,7 +74,6 @@ var searchTwitter = function(search){
       return; 
     }
     twitterErrorCount = 0;
-    // console.log(body.statuses[0]);
     var tweets = JSON.parse(body);
     var tweetsResponse = [];
 
@@ -75,45 +91,18 @@ var searchTwitter = function(search){
       tweetsResponse.push(tempObj);
     }
 
-      console.log(tweetsResponse);
-  
+    if (callback){
+
+    callback(tweetsResponse);
+    }
   }); 
-};
-
-
-
-var getToken = function(){
-
-  var form = {
-      grant_type: 'client_credentials'
-  };
-
-  var formData = querystring.stringify(form);
-  var contentLength = formData.length;
-if ( !process.env.NODE_ENV){
-  var auth =  config.basicAuth;
 }
-else{
-  var auth = process.env.BASIC_AUTH;
+
 }
 
 
-  request({
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': auth
-      },
-      uri: 'https://api.twitter.com/oauth2/token',
-      body: formData,
-      method: 'POST'
-    }, function (err, res, body) {
-      twitterKey = JSON.parse(body).access_token;
-      console.log(twitterKey);
-    });
-};
 
 
 
-
-searchTwitter(searchString);
+module.exports.getTweets('mouse');
 
