@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = { 
 
 tweets : [ { text: 'Mama said no pussy cats up in my dog house .....',
     name: 'TRAP 〰 MOSES',

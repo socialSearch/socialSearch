@@ -16,7 +16,7 @@ describe('GET /api/search', function() {
         res.body.facebook.should.be.instanceof(Array);
         done();
       });
-  });
+  }); 
 
   // it('should respond with an Array for each Key', function(done) {
   //   request(app)
