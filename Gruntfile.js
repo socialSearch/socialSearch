@@ -553,8 +553,8 @@ module.exports = function (grunt) {
   grunt.registerTask('test', function(target) {
     if (target === 'server') {
       return grunt.task.run([
-        // 'env:all',
-        // 'env:test',
+        'env:all',
+        'env:test',
         'mochaTest'
       ]);
     }
