@@ -10,7 +10,7 @@
 'use strict';
 
 var _ = require('lodash');
-var sample = require('./sampleData.js')
+var sample = require('./sampleData.js');
 var request = require('request');
 
 // Get list of things
@@ -25,7 +25,7 @@ exports.index = function(req, res) {
 
   var data = {};
   data.twitter = sample.tweets;
-  data.instagram = [query];
+  data.instagram = sample.instagram;
   data.facebook = [query];
 
   res.send(data);
