@@ -1,4 +1,6 @@
-# socialSearch 
+[![Coverage Status](https://coveralls.io/repos/socialSearch/socialSearch/badge.png)](https://coveralls.io/r/socialSearch/socialSearch)
+
+# socialSearch  
 
 Beautifully search twitter, instagram, and facebook
 
@@ -28,7 +30,6 @@ Beautifully search twitter, instagram, and facebook
 
 ## Development
 
-[![Coverage Status](https://coveralls.io/repos/socialSearch/socialSearch/badge.png)](https://coveralls.io/r/socialSearch/socialSearch)
 
 ### Installing Dependencies
 

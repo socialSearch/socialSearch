@@ -9,6 +9,7 @@ module.exports = function (grunt) {
     localConfig = {};
   }
 
+  grunt.loadNpmTasks('grunt-karma-coveralls');
   // Load grunt tasks automatically, when needed
   require('jit-grunt')(grunt, {
     express: 'grunt-express-server',
@@ -17,7 +18,8 @@ module.exports = function (grunt) {
     cdnify: 'grunt-google-cdn',
     protractor: 'grunt-protractor-runner',
     injector: 'grunt-asset-injector',
-    buildcontrol: 'grunt-build-control'
+    buildcontrol: 'grunt-build-control',
+    // coveralls: 'grunt-coveralls'
   });
 
   // Time how long tasks take. Can help when optimizing build times
@@ -37,6 +39,16 @@ module.exports = function (grunt) {
       options: {
         port: process.env.PORT || 9000
       },
+
+//       coveralls: {
+//     options: {
+//         // debug: true,
+//         coverage_dir: '.coverage',
+//         dryRun: false,
+//         force: false,
+//         recursive: false
+//     }
+// },
       dev: {
         options: {
           script: 'server/app.js',
@@ -601,4 +613,8 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  // grunt.registerTask('coveralls', [
+  //   'coveralls'
+  // ]);
 };
