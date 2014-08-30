@@ -4,9 +4,7 @@ var request = require('request');
 var fs = require('fs');
 var bodyParser = require('body-parser');
 var urlencode = require('urlencode');
-console.log()
 
-console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'development'){ 
   var config = require('../../config/config.js');
 }
@@ -26,7 +24,6 @@ else{
   var twitterKey = process.env.TWITTER_KEY;
 }
 
-console.log(twitterKey);
 var searchString = 'dog food'
 var getToken = function(callback){
 
@@ -53,7 +50,6 @@ else{
       method: 'POST'
     }, function (err, res, body) {
       twitterKey = JSON.parse(body).access_token;
-      console.log(twitterKey);
     });
 if ( callback ){
   callback();
@@ -78,7 +74,6 @@ getTweets : function(search, callback){
   request( options, function (error, response, body){
 
     if (JSON.parse(body).hasOwnProperty('errors')){
-      console.log(body);
       getToken( module.exports.getTweets(search) );
       twitterErrorCount++;
       return; 
@@ -101,7 +96,6 @@ getTweets : function(search, callback){
       tweetsResponse.push(tempObj);
     }
 
-    console.log(tweetsResponse);
     if (callback){
 
     callback(tweetsResponse);
