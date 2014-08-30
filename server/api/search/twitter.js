@@ -6,10 +6,8 @@ var bodyParser = require('body-parser');
 var urlencode = require('urlencode');
 console.log()
 
-
-if ( (process.env.NODE_ENV === 'production') || (process.env.NODE_ENV === 'ci')){  
-}
-else{
+console.log(process.env.NODE_ENV);
+if (process.env.NODE_ENV === 'development'){ 
   var config = require('../../config/config.js');
 }
 
@@ -21,11 +19,11 @@ var twitterErrorCount = 0;
 var twitterResponse = {};
 var port = process.env.PORT || 3000;
 
-if ( (process.env.NODE_ENV === 'production') || (process.env.NODE_ENV === 'ci')){  
-  var twitterKey = process.env.TWITTER_KEY;
+if (process.env.NODE_ENV === 'development') {  
+  var twitterKey = config.twitterKey;
 }
 else{
-  var twitterKey = config.twitterKey;
+  var twitterKey = process.env.TWITTER_KEY;
 }
 
 console.log(twitterKey);
@@ -38,11 +36,11 @@ var getToken = function(callback){
 
   var formData = querystring.stringify(form);
   var contentLength = formData.length;
-if ( (process.env.NODE_ENV === 'production') || (process.env.NODE_ENV === 'ci')){  
-  var auth = process.env.BASIC_AUTH;
+if (process.env.NODE_ENV === 'development') { 
+  var auth =  config.basicAuth;
 }
 else{
-  var auth =  config.basicAuth;
+  var auth = process.env.BASIC_AUTH;
 }
 
   request({
