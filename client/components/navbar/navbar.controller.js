@@ -2,10 +2,16 @@
 
 angular.module('socialSearchApp')
   .controller('NavbarCtrl', function ($scope, $location) {
-    $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
-    }];
+    $scope.menu = [
+      { 
+        'title': 'Home',
+        'link': '/'
+      },
+      { 
+        'title': 'Search',
+        'link': '/search'
+      }
+    ];
 
     $scope.isCollapsed = true;
 
