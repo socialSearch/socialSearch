@@ -6,6 +6,13 @@ module.exports = function(config) {
     // base path, that will be used to resolve files and exclude
     basePath: '',
 
+    reporters: ['coverage', 'coveralls'],
+
+     coverageReporter: {
+    type: 'lcov', // lcov or lcovonly are required for generating lcov.info files
+    dir: 'coverage/'
+  },
+
     // testing framework to use (jasmine/mocha/qunit/...)
     frameworks: ['jasmine'],
 
