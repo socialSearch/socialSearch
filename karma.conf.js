@@ -10,7 +10,7 @@ module.exports = function(config) {
 
      coverageReporter: {
     type: 'lcovonly', // lcov or lcovonly are required for generating lcov.info files
-    dir: 'coverage/'
+    dir: '.coverage/'
   },
 
     // testing framework to use (jasmine/mocha/qunit/...)
