@@ -37,3 +37,5 @@ dist
 /server/config/local.env.js
 /server/config/config.js
 /server/api/search/clientid.js
+coverage
+.coverage
