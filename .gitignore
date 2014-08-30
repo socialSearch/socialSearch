@@ -38,3 +38,4 @@ dist
 /server/config/config.js
 coverage
 .coverage
+/hidden
