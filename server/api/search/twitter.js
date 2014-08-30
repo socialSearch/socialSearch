@@ -21,6 +21,7 @@ else{
   var twitterKey = process.env.TWITTER_KEY;
 }
 
+console.log(twitterKey);
 var searchString = 'dog food'
 var getToken = function(callback){
 
@@ -83,18 +84,21 @@ getTweets : function(search, callback){
 
     for ( var i = 0; i < tweets.statuses.length; i++){
       var tempObj = {};
-      tempObj.text = tweets.statuses[i].text;
-      tempObj.name = tweets.statuses[i].user.name;
-      tempObj.user = tweets.statuses[i].user.screen_name;
-      tempObj.link = 'https://twitter.com/' + tweets.statuses[i].user.screen_name + '/statuses/' + tweets.statuses[i].id;
-      tempObj.data = tweets.statuses[i].created_at;
-      if ( tweets.statuses[i].entities.media ){
+      var thisTweet = tweets.statuses[i];
+      tempObj.text = thisTweet.text;
+      tempObj.name = thisTweet.user.name;
+      tempObj.user = thisTweet.user.screen_name;
+      tempObj.link = 'https://twitter.com/' + thisTweet.user.id + '/statuses/' + thisTweet.id_str;
+      // tempObj.id = thisTweet.id;
+      tempObj.data = thisTweet.created_at;
+      if ( thisTweet.entities.media ){
         // tempObj.media_link = {};
-        tempObj.media_link = tweets.statuses[i].entities.media[0].media_url;
+        tempObj.media_link = thisTweet.entities.media[0].media_url;
       }
       tweetsResponse.push(tempObj);
     }
 
+    console.log(tweetsResponse);
     if (callback){
 
     callback(tweetsResponse);
@@ -108,5 +112,5 @@ getTweets : function(search, callback){
 
 
 
-// module.exports.getTweets('mouse');
+module.exports.getTweets('dr pepper');
 
