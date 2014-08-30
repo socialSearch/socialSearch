@@ -2,10 +2,16 @@
 
 angular.module('socialSearchApp')
   .controller('MainCtrl', function ($scope, $http) {
-    $scope.awesomeThings = [];
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-    });
+    $scope.search = function() {
+      var q = $scope.query.replace(' ', '+');
 
+      if (q) {
+      var search = '/api/search?q=' + q;
+      
+      $http.get(search).success(function(data) {
+        $scope.response = data;
+      });
+      }
+    };
   });

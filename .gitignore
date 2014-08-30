@@ -37,4 +37,9 @@ dist
 /server/config/local.env.js
 /server/config/config.js
 coverage
+<<<<<<< HEAD
 .coverage
+/hidden
+=======
+.coverage
+>>>>>>> c85db178f6b5443b7bcf00aebf6c47d2f50c47ae
