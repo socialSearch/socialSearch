@@ -13,7 +13,7 @@ describe('GET /api/search', function() {
       .end(function(err, res) {
         if (err) return done(err);
         res.body.should.be.instanceof(Object);
-        res.body.facebook.should.be.instanceof(Array);
+        res.body.instagram.should.be.instanceof(Array);
         done();
       });
   }); 
