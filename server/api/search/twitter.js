@@ -22,7 +22,7 @@ else{
 }
 
 var searchString = 'dog food'
-var getToken = function(){
+var getToken = function(callback){
 
   var form = {
       grant_type: 'client_credentials'
@@ -49,6 +49,10 @@ else{
       twitterKey = JSON.parse(body).access_token;
       console.log(twitterKey);
     });
+if ( callback ){
+  callback();
+}
+
 };
 
 module.exports = {
@@ -69,7 +73,7 @@ getTweets : function(search, callback){
 
     if (JSON.parse(body).hasOwnProperty('errors')){
       console.log(body);
-      getToken();
+      getToken( module.exports.getTweets(search) );
       twitterErrorCount++;
       return; 
     }
@@ -104,5 +108,5 @@ getTweets : function(search, callback){
 
 
 
-module.exports.getTweets('mouse');
+// module.exports.getTweets('mouse');
 
