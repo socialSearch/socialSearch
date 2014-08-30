@@ -4,7 +4,7 @@ var request = require('request');
 var fs = require('fs');
 var bodyParser = require('body-parser');
 var urlencode = require('urlencode');
-if ( process.env.NODE_ENV !== 'production'){
+if ( process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'ci'){
   var config = require('../../config/config.js');
 }
 var querystring = require('querystring');
@@ -14,7 +14,7 @@ var twitterErrorCount = 0;
 var twitterResponse = {};
 var port = process.env.PORT || 3000;
 
-if ( process.env.NODE_ENV !== 'production'){
+if ( process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'ci'){
   var twitterKey = config.twitterKey;
 }
 else{
@@ -31,7 +31,7 @@ var getToken = function(callback){
 
   var formData = querystring.stringify(form);
   var contentLength = formData.length;
-if ( process.env.NODE_ENV !== 'production'){
+if ( process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'ci'){
   var auth =  config.basicAuth;
 }
 else{
@@ -89,10 +89,8 @@ getTweets : function(search, callback){
       tempObj.name = thisTweet.user.name;
       tempObj.user = thisTweet.user.screen_name;
       tempObj.link = 'https://twitter.com/' + thisTweet.user.id + '/statuses/' + thisTweet.id_str;
-      // tempObj.id = thisTweet.id;
       tempObj.data = thisTweet.created_at;
       if ( thisTweet.entities.media ){
-        // tempObj.media_link = {};
         tempObj.media_link = thisTweet.entities.media[0].media_url;
       }
       tweetsResponse.push(tempObj);
