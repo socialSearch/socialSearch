@@ -61,6 +61,7 @@ module.exports = {
 
 getTweets : function(search, callback){
 
+  console.log(search);
   if ( twitterErrorCount > 5 ){
     return;
   }
@@ -95,6 +96,8 @@ getTweets : function(search, callback){
       }
       tweetsResponse.push(tempObj);
     }
+
+    console.log(tweetsResponse);
 
     if (callback){
 
