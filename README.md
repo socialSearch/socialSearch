@@ -1,4 +1,4 @@
-# socialSearch 
+# socialSearch  
 
 Beautifully search twitter, instagram, and facebook
 
