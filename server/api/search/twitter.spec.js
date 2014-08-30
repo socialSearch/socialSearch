@@ -11,6 +11,7 @@ describe('Twitter Search', function() {
   it('should respond with Object with Tweet information', function(done) {
     
     twitter.getTweets('dog', function (results){
+      console.log(process.env.NODE_ENV);
 
       results[0].text.should.be.instanceof(String);
       done();
