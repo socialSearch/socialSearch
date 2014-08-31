@@ -13,6 +13,7 @@ var _ = require('lodash');
 var sample = require('./sampleData.js');
 var grab = require('./grab.js');
 var request = require('request');
+var twitter = require('./twitter.js');
 
 // Get list of things
 exports.index = function(req, res) {
@@ -20,11 +21,11 @@ exports.index = function(req, res) {
 
   //our data
   var data = {};
-  data.twitter = sample.tweets;
+  // data.twitter = sample.tweets;
 
   //our toggle
   var toggle = {};
-  toggle.twitter = true;
+  toggle.twitter = false;
   toggle.instagram = false;
   toggle.reddit = false;
 
@@ -45,6 +46,12 @@ exports.index = function(req, res) {
   grab.reddit(query, function(result){
     data.reddit = result;
     toggle.reddit = true;
+    checkToggle();
+  });
+
+    twitter.getTweets(query, function(result){
+    data.twitter = result;
+    toggle.twitter = true;
     checkToggle();
   });
 
