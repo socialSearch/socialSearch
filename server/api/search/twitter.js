@@ -4,12 +4,6 @@ var request = require('request');
 var fs = require('fs');
 var bodyParser = require('body-parser');
 var urlencode = require('urlencode');
-
-// if (process.env.NODE_ENV === 'development'){ 
-//   var config = require('../../config/config.js');
-// }
-
-
 var querystring = require('querystring');
 
  
@@ -17,14 +11,8 @@ var twitterErrorCount = 0;
 var twitterResponse = {};
 var port = process.env.PORT || 3000;
 
-// if (process.env.NODE_ENV === 'development') {  
-//   var twitterKey = config.twitterKey;
-// }
-// else{
-  var twitterKey = process.env.TWITTER_KEY;
-// }
+var twitterKey = process.env.TWITTER_KEY;
 
-var searchString = 'dog food'
 var getToken = function(callback){
 
   var form = {
@@ -33,12 +21,7 @@ var getToken = function(callback){
 
   var formData = querystring.stringify(form);
   var contentLength = formData.length;
-// if (process.env.NODE_ENV === 'development') { 
-//   var auth =  config.basicAuth;
-// }
-// else{
   var auth = process.env.BASIC_AUTH;
-// }
 
   request({
       headers: {
@@ -107,10 +90,3 @@ getTweets : function(search, callback){
 }
 
 }
-
-
-
-
-
-// module.exports.getTweets('dr pepper');
-
