@@ -36,10 +36,7 @@ client/bower_components
 dist
 /server/config/local.env.js
 /server/config/config.js
-<<<<<<< HEAD
-/hidden
-=======
 /server/api/search/clientid.js
->>>>>>> 3bc70cf2ac4202b432fb9ddc6b5d01df47567dbd
 coverage
 .coverage
+/hidden
