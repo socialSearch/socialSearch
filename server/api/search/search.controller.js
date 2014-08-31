@@ -11,41 +11,22 @@
 
 var _ = require('lodash');
 var sample = require('./sampleData.js');
-var grab = require('./grab.js');
 var request = require('request');
 
 // Get list of things
 exports.index = function(req, res) {
   var query = req.query.q;
+  console.log(req.query);
 
-  //our data
+  // request('http://twitter.com/search/'+query, function(error, response, body){
+  //   if(error){console.log(error);}
+  //   console.log(body);
+  // });
+
   var data = {};
   data.twitter = sample.tweets;
+  data.instagram = sample.instagram;
+  data.facebook = [query];
 
-  //our toggle
-  var toggle = {};
-  toggle.twitter = true;
-  toggle.instagram = false;
-  toggle.reddit = false;
-
-  var checkToggle = function(){
-    if(toggle.twitter === true && toggle.instagram === true && toggle.reddit === true){
-      res.send(data);
-    }
-  };
-
-  //grabing instagram data
-  grab.instagram(query, function(result){
-    data.instagram = result;
-    toggle.instagram = true;
-    checkToggle();
-  });
-
-  //grabbing reddit data
-  grab.reddit(query, function(result){
-    data.reddit = result;
-    toggle.reddit = true;
-    checkToggle();
-  });
-
+  res.send(data);
 };
