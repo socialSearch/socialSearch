@@ -39,3 +39,4 @@ dist
 /server/api/search/clientid.js
 coverage
 .coverage
+/hidden
