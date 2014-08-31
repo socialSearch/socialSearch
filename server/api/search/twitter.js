@@ -80,8 +80,6 @@ getTweets : function(search, callback){
       tweetsResponse.push(tempObj);
     }
 
-    console.log(tweetsResponse);
-
     if (callback){
 
     callback(tweetsResponse);
