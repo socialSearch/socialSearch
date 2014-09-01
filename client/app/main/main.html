@@ -1,26 +1,44 @@
 <!-- <div ng-include="'components/navbar/navbar.html'"></div> -->
 
-  <header class="hero-unit" id="banner">
-    <div class="container">
-      <h1>Social Search</h1>
-      <p class="lead">Search your favorite social sites!</p>
-      <div class="search-input">
-        <div class="col-lg-6 col-md-offset-3">
-          <form role="form" ng-submit="search()">
-            <div class="input-group">
-              <input type="text" ng-model="query" class="form-control">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="submit">Search</button>
-              </span>
-            </div>
-          </form>
-        </div>
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>Social Search</h1>
+    <p class="lead">Search your favorite social sites!</p>
+    <div class="search-input">
+      <div class="col-lg-6 col-md-offset-3">
+        <form role="form" ng-submit="search()">
+          <div class="input-group">
+            <input type="text" ng-model="query" class="form-control">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit">Search</button>
+            </span>
+          </div>
+        </form>
       </div>
     </div>
-  </header>
+  </div>
+</header>
+
+<div id="filter-buttons">
+  <div id="buttons">
+    <button ng-click="updateFilter('twitter')" id="twitter-button" type="button" class="btn btn-default active">Twitter</button>
+    <button ng-click="updateFilter('instagram')" id="instagram-button" type="button" class="btn btn-default active">Instagram</button>
+    <button ng-click="updateFilter('reddit')" id="reddit-button" type="button" class="btn btn-default active">Reddit</button>
+  </div>
+</div>
+
+<div id="filter">
+  <div id="filter-text">♦ ♦ ♦ filter ♦ ♦ ♦</div>
+</div>
+
+<div id="loading">
+  <div id="loading-text">
+    . . . Loading . . .
+  </div>
+</div>
 
 <div class="cont-media">
-  <div ng-repeat="post in response">
+  <div ng-repeat="post in response | filter:siteFilter">
     <div class="tweet-box" ng-if="post.loc === 'twitter'">
       <blockquote class="twitter-tweet" data-conversation="none" lang="en">
         <p>{{post.text}}</p>
@@ -59,3 +77,24 @@
     </div>
   </footer>
 </div>
+
+<script type="text/javascript">
+  'use strict';
+
+  $(document).ready(function() {
+    $('#loading-text').hide();
+
+    $('#filter').click(function () {
+      if ($('#filter').css('top').substr(0,3) < 0) {
+        $('#filter-buttons').animate({'top':'0px', 'z-index': 1}, 'slow');
+        $('#filter').animate({'top':'0px'}, 'slow');
+        $('#loading-text').animate({'top':'0px'}, 'slow');
+      } else {
+        $('#filter-buttons').css('z-index', -1);
+        $('#filter-buttons').animate({'top':'-45px'}, 'slow');
+        $('#filter').animate({'top':'-45px'}, 'slow');
+        $('#loading-text').animate({'top':'-45px'}, 'slow');
+      }
+    });
+  });
+</script>
