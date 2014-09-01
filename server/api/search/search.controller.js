@@ -49,7 +49,7 @@ exports.index = function(req, res) {
     checkToggle();
   });
 
-    twitter.getTweets(query, function(result){
+  twitter.getTweets(query, function(result){
     data.twitter = result;
     toggle.twitter = true;
     checkToggle();
