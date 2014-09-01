@@ -43,8 +43,8 @@
 
 .tweet-box {
     display: inline-block;
-    margin:  5px;
-    width : 100%;
+    margin:  -5px 5px -5px 5px;
+    width : 460px;
 }
 
 .prof-pic {
@@ -56,13 +56,16 @@
 
 .insta-box {
     padding: 6px;
-    height: 490px;
-    width: 440px;
+    height: 510px;
+    width: 455px;
     position: relative;
-    border: 1px solid #eee;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(238, 238, 238) rgb(221, 221, 221) rgb(187, 187, 187);
     border-radius: 5px;
     display: inline-block;
     margin: 5px;
+    box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 3px;
 }
 
 .i-logo {

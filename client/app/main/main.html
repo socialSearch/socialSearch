@@ -20,27 +20,29 @@
   </header>
 
 <div class="cont-media">
-  <div class="tweet-box" ng-repeat="tweet in response.twitter" repeat-done="twttr.widgets.load()">
-    <blockquote class="twitter-tweet" data-conversation="none" lang="en">
-      <p>{{tweet.text}}</p>
-      &mdash; {{tweet.name}} (@{{tweet.user}})
-      <a href="{{tweet.link}}"></a>
-    </blockquote>
-    <div id="twitter-widget-src">
-      <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <div ng-repeat="post in response">
+    <div class="tweet-box" ng-if="post.loc === 'twitter'">
+      <blockquote class="twitter-tweet" data-conversation="none" lang="en">
+        <p>{{post.text}}</p>
+        &mdash; {{post.name}} (@{{post.user}})
+        <a href="{{post.link}}"></a>
+      </blockquote>
+      <div id="twitter-widget-src">
+        <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
     </div>
-  </div>
 
-  <div class="insta-box" ng-repeat="insta in response.instagram">
-    <div class="i-head">
-      <img src="{{insta.proPic}}" class="prof-pic">
-      <a href="http://instagram.com/{{insta.user}}"><b>{{insta.user}}</b></a>
-      <a href="{{insta.link}}">
-        <img src="/assets/images/instagram.png" class="i-logo">
-      </a>
-    </div>
-    <div>
-      <img src="{{insta.picture}}" class="i-pic">
+    <div class="insta-box" ng-if="post.loc === 'instagram'">
+      <div class="i-head">
+        <img src="{{post.proPic}}" class="prof-pic">
+        <a href="http://instagram.com/{{post.user}}"><b>{{post.user}}</b></a>
+        <a href="{{post.link}}">
+          <img src="/assets/images/instagram.png" class="i-logo">
+        </a>
+      </div>
+      <div>
+        <img src="{{post.picture}}" class="i-pic">
+      </div>
     </div>
   </div>
   
