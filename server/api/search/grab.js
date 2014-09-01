@@ -2,11 +2,7 @@
 
 var _ = require('lodash');
 var request = require('request');
-if( process.env.NODE_ENV === 'development' ){
-  var instagramKey = require('./clientid.js').instagramKey;
-} else {
-  var instagramKey = process.env.INSTAGRAM_KEY;
-}
+var instagramKey = process.env.INSTAGRAM_KEY;
 
 exports.instagram = function(query, cb) {
   var storage = [];
