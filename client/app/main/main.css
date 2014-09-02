@@ -59,8 +59,12 @@
     margin: auto;
 }
 
+#filter-buttons {
+    text-align: center;
+}
+
 #buttons {
-    width: 231px;
+    display: inline-block;
     margin: auto;
 }
 
@@ -93,9 +97,10 @@
     border-bottom-right-radius: 5px;
     top: -45px;
     position: relative;
-    width: 101px;
+    width: 90px;
     margin: auto;
     background-color: white;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 }
 
 .cont-media {
