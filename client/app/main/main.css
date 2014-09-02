@@ -3,7 +3,7 @@
 }
 
 #banner {
-    border-bottom: none;
+    border-bottom: 1px solid #555;
     margin-top: -20px;
 }
 
@@ -34,17 +34,91 @@
     background-color: white;
 }
 
+#filter-buttons {
+    background-color: #4393B9;
+    padding: 5px 0;
+    position: relative;
+    top: -45px;
+    z-index: -1;
+}
+
+#filter {
+    background-color: #4393B9;
+    border-top: 1px solid #555;
+    border-bottom: 1px solid #555;
+    cursor: pointer;
+    position: relative;
+    top: -45px;
+    z-index: 1;
+}
+
+#filter-text {
+    color: white;
+    font-size: x-small;
+    width: 70px;
+    margin: auto;
+}
+
+#filter-buttons {
+    text-align: center;
+}
+
+#buttons {
+    display: inline-block;
+    margin: auto;
+}
+
+#twitter-button {
+    background-color: #55ACEE;
+    color: white;
+    border-color: #55ACEE;
+}
+
+#instagram-button {
+    background-color: #49769C;
+    color: white;
+    border-color: #49769C;
+}
+
+#reddit-button {
+    background-color: #FF4500;
+    color: white;
+    border-color: #FF4500;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+#loading-text {
+    border: 1px solid #555;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    top: -45px;
+    position: relative;
+    width: 90px;
+    margin: auto;
+    background-color: white;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
 .cont-media {
-    -moz-column-width: 25em;
     -webkit-column-width: 25em;
+    -moz-column-width: 25em;
+    column-width: 25em;
+    /*-webkit-column-gap: -1em;
     -moz-column-gap: -1em;
-    -webkit-column-gap: -1em;
+    column-gap: -1em;*/
+    position: absolute;
+    top: 255px;
+    width: 100%;
 }
 
 .tweet-box {
     display: inline-block;
-    margin:  5px;
-    width : 100%;
+    margin:  -5px 5px -5px 5px;
+    width : 460px;
 }
 
 .prof-pic {
@@ -56,13 +130,16 @@
 
 .insta-box {
     padding: 6px;
-    height: 490px;
-    width: 440px;
+    height: 510px;
+    width: 455px;
     position: relative;
-    border: 1px solid #eee;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(238, 238, 238) rgb(221, 221, 221) rgb(187, 187, 187);
     border-radius: 5px;
     display: inline-block;
     margin: 5px;
+    box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 3px;
 }
 
 .i-logo {
