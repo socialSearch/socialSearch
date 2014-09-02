@@ -31,16 +31,18 @@ exports.instagram = function(query, cb) {
     //parsing the json string
     var data = JSON.parse(result).data;
 
-    //grabing specific data from instagram
-    data.forEach(function(value){
-      var obj = {};
-      obj.picture = value.images.standard_resolution.url;
-      obj.user = value.user.username;
-      obj.proPic = value.user.profile_picture;
-      obj.link = value.link;
-      obj.date = value.created_time;
-      storage.push(obj);
-    });
+    if( data ) {
+      //grabing specific data from instagram
+      data.forEach(function(value){
+        var obj = {};
+        obj.picture = value.images.standard_resolution.url;
+        obj.user = value.user.username;
+        obj.proPic = value.user.profile_picture;
+        obj.link = value.link;
+        obj.date = value.created_time;
+        storage.push(obj);
+      });
+    }
 
     //passing the array of data into the callback
     cb( storage );
@@ -81,15 +83,17 @@ exports.reddit = function(query, cb) {
     //parsing the json string
     var data = JSON.parse(result).data.children;
 
-    //grabing specific data from reddit
-    data.forEach(function(value){
-      var obj = {};
-      obj.title = value.data.title;
-      obj.name = value.data.name;
-      obj.link = value.data.url;
-      obj.date = value.data.created;
-      storage.push(obj);
-    });
+    if( data ) {
+      //grabing specific data from reddit
+      data.forEach(function(value){
+        var obj = {};
+        obj.title = value.data.title;
+        obj.name = value.data.name;
+        obj.link = value.data.url;
+        obj.date = value.data.created;
+        storage.push(obj);
+      });
+    }
 
     //passing array of data into the callback
     cb( storage );
