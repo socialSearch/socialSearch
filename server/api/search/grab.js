@@ -81,15 +81,20 @@ exports.reddit = function(query, cb) {
     // console.log('reddit statuscode', response.statusCode );
 
     //parsing the json string
+    console.log(JSON.parse(result).data.children );
     var data = JSON.parse(result).data.children;
 
     if( data ) {
       //grabing specific data from reddit
       data.forEach(function(value){
         var obj = {};
-        obj.title = value.data.title;
-        obj.name = value.data.name;
+        obj.domain = value.data.domain;
+        obj.author = value.data.author;
+        obj.score = value.data.score;
         obj.link = value.data.url;
+        obj.title = value.data.title;
+        obj.num_comments = value.data.num_comments;
+        obj.subreddit = value.data.subreddit;
         obj.date = value.data.created;
         storage.push(obj);
       });
