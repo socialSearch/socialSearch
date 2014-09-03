@@ -13,7 +13,7 @@
     letter-spacing: -1px;
 }
 
-.hero-unit {
+.hero-unit {t
     position: relative;
     padding: 30px 15px;
     color: #F5F5F5;
@@ -35,17 +35,28 @@
 }
 
 #filter-buttons {
-    background-color: #4393B9;
+    border-left: 1px solid #555;
+    border-right: 1px solid #555;
+    border-bottom: 1px solid #555;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #C3C3C3;
     padding: 5px 0;
+    width: 500px;
+    margin: auto;
     position: relative;
     top: -45px;
     z-index: -1;
 }
 
 #filter {
-    background-color: #4393B9;
-    border-top: 1px solid #555;
+    margin: auto;
+    background-color: #C3C3C3;
+    border-left: 1px solid #555;
+    border-right: 1px solid #555;
     border-bottom: 1px solid #555;
+
+    width: 250px;
     cursor: pointer;
     position: relative;
     top: -45px;
@@ -90,17 +101,23 @@
   outline: none;
 }
 
-#loading-text {
+#loading {
     border: 1px solid #555;
     border-top: none;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    top: -45px;
+    top: -46px;
     position: relative;
-    width: 90px;
+    width: 100px;
     margin: auto;
     background-color: white;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+#loading-text {
+    font-size: small;
+    margin: auto;
+    width: 84px;
 }
 
 .cont-media {
@@ -157,4 +174,50 @@
 .i-pic {
     width: 100%;
     height: 100%;
+}
+
+.reddit-box {
+    padding: 6px;
+    height: 110px;
+    width: 455px;
+    position: relative;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(238, 238, 238) rgb(221, 221, 221) rgb(187, 187, 187);
+    border-radius: 5px;
+    display: inline-block;
+    margin: 5px;
+    box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 3px;
+    font-size: large;
+}
+
+.r-logo {
+    height: 90px;
+    margin-top: 2px;
+    padding: 0 5px 0 0;
+    border-right: 1px solid #555;
+}
+
+.r-float {
+    float: left;
+}
+
+.r-content {
+    margin-left: 5px;
+    width: 365px;
+    top: 0px;
+}
+
+.r-info {
+    position: absolute;
+    bottom: 5px;
+    margin-left: 5px;
+    width: 365px;
+    font-size: small;
+}
+
+.r-holder {
+    position: relative;
+    height: 100px;
+    width: 365px;
 }

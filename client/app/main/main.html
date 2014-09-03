@@ -21,9 +21,9 @@
 
 <div id="filter-buttons">
   <div id="buttons">
-    <button ng-click="updateFilter('twitter')" id="twitter-button" type="button" class="btn btn-default active"><b>Twitter</b></button>
-    <button ng-click="updateFilter('instagram')" id="instagram-button" type="button" class="btn btn-default active"><b>Instagram</b></button>
-    <button ng-click="updateFilter('reddit')" id="reddit-button" type="button" class="btn btn-default active"><b>Reddit</b></button>
+    <button ng-click="filter('twitter')" id="twitter-button" type="button" class="btn btn-default active"><b>Twitter</b></button>
+    <button ng-click="filter('instagram')" id="instagram-button" type="button" class="btn btn-default active"><b>Instagram</b></button>
+    <button ng-click="filter('reddit')" id="reddit-button" type="button" class="btn btn-default active"><b>Reddit</b></button>
   </div>
 </div>
 
@@ -38,7 +38,7 @@
 </div>
 
 <div class="cont-media">
-  <div ng-repeat="post in response | filter:siteFilter">
+  <div ng-repeat="post in response">
     <div class="tweet-box" ng-if="post.loc === 'twitter'">
       <blockquote class="twitter-tweet" data-conversation="none" lang="en">
         <p>{{post.text}}</p>
@@ -62,7 +62,23 @@
         <img src="{{post.picture}}" class="i-pic">
       </div>
     </div>
+
+    <div class='reddit-box' ng-if="post.loc === 'reddit'">
+      <img src="/assets/images/reddit.png" class="r-logo r-float">
+      <div class="r-holder r-float">
+        <div class='r-content r-float'>
+          <a href="{{post.link}}">{{post.title}}</a><br>
+        </div>
+        <div class="r-info r-float">
+          <span class="r-votes">{{post.score}}</span>
+          <a href="http://www.reddit.com/u/{{post.author}}">{{post.author}}</a>
+          <a href="http://www.reddit.com/r/{{post.subreddit}}">/r/{{post.subreddit}}</a>
+          <span class="r-time">{{post.date}}</span>
+        </div>
+      </div>
+    </div>
   </div>
+
   
 </div>
 
@@ -72,7 +88,7 @@
       <p>
         Social Search Inc. |
         <a href="https://github.com/socialSearch/socialSearch">Github</a> |
-        <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a>
+        <a href="https://github.com/socialSearch/socialSearch/issues?state=open">Issues</a>
       </p>
     </div>
   </footer>
@@ -88,12 +104,12 @@
       if ($('#filter').css('top').substr(0,3) < 0) {
         $('#filter-buttons').animate({'top':'0px', 'z-index': 1}, 'slow');
         $('#filter').animate({'top':'0px'}, 'slow');
-        $('#loading-text').animate({'top':'0px'}, 'slow');
+        $('#loading').animate({'top':'-1px'}, 'slow');
       } else {
         $('#filter-buttons').css('z-index', -1);
         $('#filter-buttons').animate({'top':'-45px'}, 'slow');
         $('#filter').animate({'top':'-45px'}, 'slow');
-        $('#loading-text').animate({'top':'-45px'}, 'slow');
+        $('#loading').animate({'top':'-46px'}, 'slow');
       }
     });
   });
