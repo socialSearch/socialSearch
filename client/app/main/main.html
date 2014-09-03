@@ -100,6 +100,18 @@
   $(document).ready(function() {
     $('#loading-text').hide();
 
+    if ($(document).width() < 480) {
+      $('.r-holder').width($(document).width() - 96);
+    }
+    
+    $(window).resize(function() {
+      if ($(document).width() < 480) {
+        $('.r-holder').width($(document).width() - 96);
+      } else {
+        $('r-holder').removeAttr('style');
+      }
+    });
+
     $('#filter').click(function () {
       if ($('#filter').css('top').substr(0,3) < 0) {
         $('#filter-buttons').animate({'top':'0px', 'z-index': 1}, 'slow');
