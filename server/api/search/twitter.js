@@ -12,39 +12,7 @@ var twitterErrorCount = 0;
 var twitterResponse = {};
 var port = process.env.PORT || 3000;
 
-// var twitterKey = process.env.TWITTER_KEY;
-
 var twitterToken;
-
-// var getToken = function(callback){
-
-//   return new Promise(function (resolve, reject) {
-
-//     var form = {
-//         grant_type: 'client_credentials'
-//     };
-
-//     var formData = querystring.stringify(form);
-//     var contentLength = formData.length;
-//     request({
-//         headers: {
-//           'Content-Type': 'application/x-www-form-urlencoded',
-//         },
-
-//         auth: {
-//             'user': process.env.TWITTER_API_KEY,
-//             'pass': process.env.TWITTER_API_SECRET
-//         },
-//         uri: 'https://api.twitter.com/oauth2/token',
-//         body: formData,
-//         method: 'POST'
-//         }, function (err, res, body) {
-//           console.log(err);
-//           twitterToken = JSON.parse(body).access_token;
-//           resolve();
-//       });
-//     });
-// };
 
 module.exports = {
 
@@ -144,5 +112,3 @@ sendRequest : function(search, callback){
 }
 
 }
-
-// getToken();
