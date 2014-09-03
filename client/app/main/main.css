@@ -65,7 +65,7 @@
 #filter-text {
     color: white;
     font-size: x-small;
-    width: 70px;
+    width: 14px;
     margin: auto;
 }
 
@@ -180,7 +180,7 @@
     padding: 6px;
     height: 110px;
     /* use jqery to set min-width of all boxes to screen size - x (margin or whatever)*/
-    max-width: 441px;
+    max-width: 445px;
     position: relative;
     border-width: 1px;
     border-style: solid;
