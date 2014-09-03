@@ -95,8 +95,8 @@ angular.module('socialSearchApp')
             post.loc = key;
 
             if (key === 'reddit') {
-              if (post.title.length > 115) {
-                post.title = post.title.substr(0,115) + '...';
+              if (post.title.length > 100) {
+                post.title = post.title.substr(0,100) + '...';
               }
               post.date = timeAgo(post.date);
             }
