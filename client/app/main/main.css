@@ -124,9 +124,9 @@
 }
 
 .cont-media {
-    /*-webkit-column-width: 25em;
+    -webkit-column-width: 25em;
     -moz-column-width: 25em;
-    column-width: 25em;*/
+    column-width: 25em;
     position: absolute;
     top: 255px;
     width: 100%;
