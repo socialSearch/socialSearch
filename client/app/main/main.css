@@ -42,11 +42,15 @@
     border-bottom-right-radius: 5px;
     background-color: #C3C3C3;
     padding: 5px 0;
-    width: 350px;
+    /*width: 350px;*/
     margin: auto;
     position: relative;
     top: -45px;
     z-index: -1;
+}
+
+.width-buttons {
+    width: 350px;
 }
 
 #filter {
@@ -120,15 +124,13 @@
 }
 
 .cont-media {
-    -webkit-column-width: 25em;
+    /*-webkit-column-width: 25em;
     -moz-column-width: 25em;
-    column-width: 25em;
-    /*-webkit-column-gap: -1em;
-    -moz-column-gap: -1em;
-    column-gap: -1em;*/
+    column-width: 25em;*/
     position: absolute;
     top: 255px;
     width: 100%;
+    /*height: 100%;*/
     /*use height 100% and set width with jquery*/
 }
 
