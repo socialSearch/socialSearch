@@ -1,4 +1,5 @@
 [![Coverage Status](https://coveralls.io/repos/socialSearch/socialSearch/badge.png)](https://coveralls.io/r/socialSearch/socialSearch)
+[![Build Status](https://travis-ci.org/socialSearch/socialSearch.svg?branch=master)](https://travis-ci.org/socialSearch/socialSearch)
 
 # socialSearch  
 
