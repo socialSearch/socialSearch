@@ -1,48 +1,84 @@
 <!-- <div ng-include="'components/navbar/navbar.html'"></div> -->
 
-  <header class="hero-unit" id="banner">
-    <div class="container">
-      <h1>Social Search</h1>
-      <p class="lead">Search your favorite social sites!</p>
-      <div class="search-input">
-        <div class="col-lg-6 col-md-offset-3">
-          <form role="form" ng-submit="search()">
-            <div class="input-group">
-              <input type="text" ng-model="query" class="form-control">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="submit">Search</button>
-              </span>
-            </div>
-          </form>
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>Social Search</h1>
+    <p class="lead">Search your favorite social sites!</p>
+    <div class="search-input">
+      <div class="col-lg-6 col-md-offset-3">
+        <form role="form" ng-submit="search()">
+          <div class="input-group">
+            <input type="text" ng-model="query" class="form-control">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit">Search</button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div id="filter-buttons">
+  <div id="buttons">
+    <button ng-click="filter('twitter')" id="twitter-button" type="button" class="btn btn-default active"><b>Twitter</b></button>
+    <button ng-click="filter('instagram')" id="instagram-button" type="button" class="btn btn-default active"><b>Instagram</b></button>
+    <button ng-click="filter('reddit')" id="reddit-button" type="button" class="btn btn-default active"><b>Reddit</b></button>
+  </div>
+</div>
+
+<div id="filter">
+  <div id="filter-text">♦ ♦ ♦ filter ♦ ♦ ♦</div>
+</div>
+
+<div id="loading">
+  <div id="loading-text">
+    <b>. . Loading . .</b>
+  </div>
+</div>
+
+<div class="cont-media">
+  <div ng-repeat="post in response">
+    <div class="tweet-box" ng-if="post.loc === 'twitter'">
+      <blockquote class="twitter-tweet" data-conversation="none" lang="en">
+        <p>{{post.text}}</p>
+        &mdash; {{post.name}} (@{{post.user}})
+        <a href="{{post.link}}"></a>
+      </blockquote>
+      <div id="twitter-widget-src">
+        <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </div>
+
+    <div class="insta-box" ng-if="post.loc === 'instagram'">
+      <div class="i-head">
+        <img src="{{post.proPic}}" class="prof-pic">
+        <a href="http://instagram.com/{{post.user}}"><b>{{post.user}}</b></a>
+        <a href="{{post.link}}">
+          <img src="/assets/images/instagram.png" class="i-logo">
+        </a>
+      </div>
+      <div>
+        <img src="{{post.picture}}" class="i-pic">
+      </div>
+    </div>
+
+    <div class='reddit-box' ng-if="post.loc === 'reddit'">
+      <img src="/assets/images/reddit.png" class="r-logo r-float">
+      <div class="r-holder r-float">
+        <div class='r-content r-float'>
+          <a href="{{post.link}}">{{post.title}}</a><br>
+        </div>
+        <div class="r-info r-float">
+          <span class="r-votes">{{post.score}}</span>
+          <a href="http://www.reddit.com/u/{{post.author}}">{{post.author}}</a>
+          <a href="http://www.reddit.com/r/{{post.subreddit}}">/r/{{post.subreddit}}</a>
+          <span class="r-time">{{post.date}}</span>
         </div>
       </div>
     </div>
-  </header>
-
-<div class="cont-media">
-  <div class="tweet-box" ng-repeat="tweet in response.twitter" repeat-done="twttr.widgets.load()">
-    <blockquote class="twitter-tweet" data-conversation="none" lang="en">
-      <p>{{tweet.text}}</p>
-      &mdash; {{tweet.name}} (@{{tweet.user}})
-      <a href="{{tweet.link}}"></a>
-    </blockquote>
-    <div id="twitter-widget-src">
-      <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-    </div>
   </div>
 
-  <div class="insta-box" ng-repeat="insta in response.instagram">
-    <div class="i-head">
-      <img src="{{insta.proPic}}" class="prof-pic">
-      <a href="http://instagram.com/{{insta.user}}"><b>{{insta.user}}</b></a>
-      <a href="{{insta.link}}">
-        <img src="/assets/images/instagram.png" class="i-logo">
-      </a>
-    </div>
-    <div>
-      <img src="{{insta.picture}}" class="i-pic">
-    </div>
-  </div>
   
 </div>
 
@@ -52,8 +88,29 @@
       <p>
         Social Search Inc. |
         <a href="https://github.com/socialSearch/socialSearch">Github</a> |
-        <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a>
+        <a href="https://github.com/socialSearch/socialSearch/issues?state=open">Issues</a>
       </p>
     </div>
   </footer>
 </div>
+
+<script type="text/javascript">
+  'use strict';
+
+  $(document).ready(function() {
+    $('#loading-text').hide();
+
+    $('#filter').click(function () {
+      if ($('#filter').css('top').substr(0,3) < 0) {
+        $('#filter-buttons').animate({'top':'0px', 'z-index': 1}, 'slow');
+        $('#filter').animate({'top':'0px'}, 'slow');
+        $('#loading').animate({'top':'-1px'}, 'slow');
+      } else {
+        $('#filter-buttons').css('z-index', -1);
+        $('#filter-buttons').animate({'top':'-45px'}, 'slow');
+        $('#filter').animate({'top':'-45px'}, 'slow');
+        $('#loading').animate({'top':'-46px'}, 'slow');
+      }
+    });
+  });
+</script>
