@@ -1,9 +1,24 @@
 language: node_js
 node_js:
   - '0.10'
-  - '0.11'
+  #- '0.11'
 before_script:
   - npm install -g bower grunt-cli
   - bower install
 # services: mongodb
-after_script: istanbul cover ./node_modules/mocha/bin/_mocha server/**/**/ --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+after_script: 
+  - istanbul cover ./node_modules/mocha/bin/_mocha server/**/**/ --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+after_success:
+  - git config --global user.email "caseyg1204@gmail.com"
+  - git config --global user.name "Casey"
+  - echo "Host heroku.com" >> ~/.ssh/config
+  - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
+  - echo "   CheckHostIP no" >> ~/.ssh/config; 
+  - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config; 
+  - if [[ $TRAVIS_PULL_REQUEST == "false" && $TRAVIS_BRANCH == "master" ]]; then gem install heroku; fi
+  - if [[ $TRAVIS_PULL_REQUEST == "false" && $TRAVIS_BRANCH == "master" ]]; then heroku keys:clear; fi
+  - if [[ $TRAVIS_PULL_REQUEST == "false" && $TRAVIS_BRANCH == "master" ]]; then yes | heroku keys:add; fi
+  #- if [[ $TRAVIS_PULL_REQUEST == "false" && $TRAVIS_BRANCH == "master" ]]; then git remote add heroku git@heroku.com:socialsearchd.git; fi
+  - if [[ $TRAVIS_PULL_REQUEST == "false" && $TRAVIS_BRANCH == "master" ]]; then grunt build; fi
+  - if [[ $TRAVIS_PULL_REQUEST == "false" && $TRAVIS_BRANCH == "master" ]]; then yes | grunt buildcontrol:heroku;  fi
+  - if [[ $TRAVIS_PULL_REQUEST == "false" && $TRAVIS_BRANCH == "master" ]]; then heroku keys:clear; fi
