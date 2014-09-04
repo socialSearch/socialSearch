@@ -81,7 +81,7 @@ exports.reddit = function(query, cb) {
     // console.log('reddit statuscode', response.statusCode );
 
     //parsing the json string
-    console.log(JSON.parse(result).data.children );
+    // console.log(JSON.parse(result).data.children );
     var data = JSON.parse(result).data.children;
 
     if( data ) {
