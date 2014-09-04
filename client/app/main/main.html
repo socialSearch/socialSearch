@@ -65,7 +65,7 @@
 
     <div class='reddit-box' ng-if="post.loc === 'reddit'">
       <img src="/assets/images/reddit.png" class="r-logo r-float">
-      <div class="r-holder r-float">
+      <div class="r-holder">
         <div class='r-content r-float'>
           <a href="{{post.link}}">{{post.title}}</a><br>
         </div>
@@ -99,6 +99,8 @@
 
   $(document).ready(function() {
     $('#loading-text').hide();
+    console.log($(window).width());
+    console.log($(document).width());
 
     if ($(window).width() <= 320) {
       if ($(window).width() <= 305) {
@@ -106,12 +108,12 @@
       } else {
         $('.reddit-box').css('font-size', 'small');
       }
-      $('.r-holder').width($(window).width() - 95);
-      $('.cont-media').css('top', 320);
+      $('h1').css('font-size', '35px');
       $('.r-info').css('font-size', '11px');
+      $('.reddit-box').width($(window).width() - 25);
     } else if ($(document).width() <= 480 && $(document).width() > 320) {
-      $('.r-holder').width($(document).width() - 115);
-      $('.cont-media').css('top', 320);
+      $('h1').css('font-size', '45px');
+      $('.reddit-box').width($(window).width() - 25);
       $('.reddit-box').css('font-size', '14px');
       $('.r-info').css('font-size', '11px');
     } else {
@@ -120,9 +122,10 @@
     
     $(window).resize(function() {
       if ($(document).width() <= 480) {
-        $('.r-holder').width($(document).width() - 115);
+        $('.reddit-box').width($(window).width() - 25);
       } else {
         $('r-holder').removeAttr('style');
+        $('.reddit-box').width('450 px');
       }
     });
 

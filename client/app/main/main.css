@@ -150,7 +150,7 @@
 .insta-box {
     padding: 6px;
     height: 510px;
-    max-width: 441px;
+    max-width: 450px;
     position: relative;
     border-width: 1px;
     border-style: solid;
@@ -181,9 +181,7 @@
 .reddit-box {
     padding: 6px;
     height: 110px;
-    /* use jqery to set min-width of all boxes to screen size - x (margin or whatever)*/
-    max-width: 445px;
-    position: relative;
+    width: 450px;
     border-width: 1px;
     border-style: solid;
     border-color: rgb(238, 238, 238) rgb(221, 221, 221) rgb(187, 187, 187);
@@ -207,7 +205,6 @@
 
 .r-content {
     margin-left: 5px;
-    max-width: 365px;
     top: 0px;
 }
 
@@ -222,5 +219,5 @@
 .r-holder {
     position: relative;
     height: 100px;
-    width: 356px;
+    margin-left: 71px;
 }
