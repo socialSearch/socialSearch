@@ -31,7 +31,7 @@ exports.index = function(req, res) {
 
   var checkToggle = function(){
     if(toggle.twitter === true && toggle.instagram === true && toggle.reddit === true){
-      res.send(data);
+      res.jsonp(data);
     }
   };
 
