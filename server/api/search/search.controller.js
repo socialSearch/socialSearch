@@ -17,6 +17,7 @@ var twitter = require('./twitter.js');
 
 // Get list of things
 exports.index = function(req, res) {
+
   var query = req.query.q;
 
   //our data
@@ -31,7 +32,12 @@ exports.index = function(req, res) {
 
   var checkToggle = function(){
     if(toggle.twitter === true && toggle.instagram === true && toggle.reddit === true){
-      res.jsonp(data);
+      if (req.query.hasOwnProperty('callback')){
+        res.jsonp(data);
+      }
+      else{
+        res.send(data);
+      }
     }
   };
 
