@@ -38,6 +38,14 @@ describe('GET /api/search', function() {
 
   });
 
+  it('should handle Instagram error', function(done) {
+    
+    grab.instagram('dog', function (result){
+      result.should.have.keys('error');
+      done();
+    }, '1');
+  });
+
   it('should respond with 404 when calling non existent route', function(done) {
     
     request(app)
