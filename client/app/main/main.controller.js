@@ -49,19 +49,26 @@ angular.module('socialSearchApp')
       var d = new Date();
       var nowTs = Math.floor(d.getTime()/1000);
       var seconds = nowTs-unixT;
+      var time = 0;
 
       if (seconds >= 12*30*24*60*60) {
-        return Math.floor(seconds/(12*30*24*60*60)) + ' years ago';
+        time = Math.floor(seconds/(12*30*24*60*60));
+        return time > 1 ? time + ' years ago' : time + ' year ago';
       } else if (seconds >= 30*24*60*60) {
-        return Math.floor(seconds/(30*24*60*60)) + ' months ago';
+        time = Math.floor(seconds/(30*24*60*60));
+        return time > 1 ? time + ' months ago' : time + ' month ago';
       } else if (seconds >= 24*60*60) {
-        return Math.floor(seconds/(24*60*60)) + ' days ago';
+        time = Math.floor(seconds/(24*60*60));
+        return time > 1 ? time + ' days ago' : time + ' day ago';
       } else if (seconds >= 60*60) {
-         return Math.floor(seconds/(60*60)) + ' hours ago';
+        time = Math.floor(seconds/(60*60));
+        return time > 1 ? time + ' hours ago' : time + ' hour ago';
       } else if (seconds >= 60) {
-         return Math.floor(seconds/60) + ' minutes ago';
+        time = Math.floor(seconds/60);
+        return time > 1 ? time + ' minutes ago' : time + ' minute ago';
       } else {
-        return Math.floor(seconds) + ' seconds ago';
+        time = Math.floor(seconds);
+        return time > 1 ? time + ' seconds ago' : time + ' second ago';
       }
     };
 
