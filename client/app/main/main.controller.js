@@ -44,26 +44,26 @@ angular.module('socialSearchApp')
       return array;
     };
 
-    function timeAgo(unixT) {
+    $scope.timeAgo = function(unixT) {
 
       var d = new Date();
       var nowTs = Math.floor(d.getTime()/1000);
       var seconds = nowTs-unixT;
 
-      if (seconds > 12*30*24*60*60) {
+      if (seconds >= 12*30*24*60*60) {
         return Math.floor(seconds/(12*30*24*60*60)) + ' years ago';
-      } else if (seconds > 30*24*60*60) {
+      } else if (seconds >= 30*24*60*60) {
         return Math.floor(seconds/(30*24*60*60)) + ' months ago';
-      } else if (seconds > 24*60*60) {
+      } else if (seconds >= 24*60*60) {
         return Math.floor(seconds/(24*60*60)) + ' days ago';
-      } else if (seconds > 60*60) {
+      } else if (seconds >= 60*60) {
          return Math.floor(seconds/(60*60)) + ' hours ago';
-      } else if (seconds > 60) {
+      } else if (seconds >= 60) {
          return Math.floor(seconds/60) + ' minutes ago';
       } else {
         return Math.floor(seconds) + ' seconds ago';
       }
-    }
+    };
 
     /*
     // Angular filter function
@@ -99,7 +99,7 @@ angular.module('socialSearchApp')
               if (post.title.length > 100) {
                 post.title = post.title.substr(0,100) + '...';
               }
-              post.date = timeAgo(post.date);
+              post.date = $scope.timeAgo(post.date);
             }
             res.push(post);
           });
