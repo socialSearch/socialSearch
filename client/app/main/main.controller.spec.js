@@ -79,21 +79,21 @@ describe('Controller: MainCtrl', function () {
 
   it('Should return correct values with timeAgo()', function() {
     var d = new Date();
-    expect(scope.timeAgo(Math.floor(d/1000) - 1)).toBe('1 seconds ago');
+    expect(scope.timeAgo(Math.floor(d/1000) - 1)).toBe('1 second ago');
 
     d = new Date();
-    expect(scope.timeAgo(Math.floor(d/1000) - 1*60)).toBe('1 minutes ago');
+    expect(scope.timeAgo(Math.floor(d/1000) - 1*60)).toBe('1 minute ago');
 
     d = new Date();
-    expect(scope.timeAgo(Math.floor(d/1000) - 1*60*60)).toBe('1 hours ago');
+    expect(scope.timeAgo(Math.floor(d/1000) - 1*60*60)).toBe('1 hour ago');
 
     d = new Date();
-    expect(scope.timeAgo(Math.floor(d/1000) - 1*60*60*24)).toBe('1 days ago');
+    expect(scope.timeAgo(Math.floor(d/1000) - 1*60*60*24)).toBe('1 day ago');
 
     d = new Date();
-    expect(scope.timeAgo(Math.floor(d/1000) - 1*60*60*24*30)).toBe('1 months ago');
+    expect(scope.timeAgo(Math.floor(d/1000) - 1*60*60*24*30)).toBe('1 month ago');
 
     d = new Date();
-    expect(scope.timeAgo(Math.floor(d/1000) - 1*60*60*24*30*12)).toBe('1 years ago');
+    expect(scope.timeAgo(Math.floor(d/1000) - 1*60*60*24*30*12)).toBe('1 year ago');
   });
 });
