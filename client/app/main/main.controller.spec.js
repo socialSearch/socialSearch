@@ -6,13 +6,42 @@ describe('Controller: MainCtrl', function () {
   beforeEach(module('socialSearchApp'));
 
   var MainCtrl,
-      scope;
+      scope,
+      $httpBackend;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
-    //$httpBackend = _$httpBackend_;
-    //$httpBackend.expectGET('/api/things')
-    //   .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
+    $httpBackend = _$httpBackend_;
+    $httpBackend.expectGET('/api/search?q=cat')
+      .respond({
+        instagram: [{
+          'date': '1410287870',
+          'link': 'http://instagram.com/p/svC4XcH2-U/',
+          'loc': 'instagram',
+          'picture': 'http://scontent-a.cdninstagram.com/hphotos-xfa1/t51.2885-15/10598645_150616045109011_1702766430_n.jpg',
+          'proPic' : 'http://images.ak.instagram.com/profiles/profile_11632010_75sq_1319397848.jpg',
+          'user': 'stoddigasumpen'
+        }],
+        reddit: [{
+          'author': 'seamus-cat',
+          'date': 1330310600,
+          'domain': 'imgur.com',
+          'link': 'http://imgur.com/05RTC',
+          'loc': 'reddit',
+          'num_comments': 197,
+          'score': 1207,
+          'subreddit': 'cats',
+          'title': 'A year ago my cat was hit by a car.... this is him today.'
+        }],
+        twitter: [{
+          'date': 'Tue Sep 09 19:11:34 +0000 2014',
+          'link': 'https://twitter.com/220558916/statuses/509418854096076801',
+          'loc': 'twitter',
+          'name': 'Kati Persons',
+          'text': 'I\'m becoming less and less of a cat person by the day.',
+          'user': 'katiiiiileeeee'
+        }]
+      });
 
     scope = $rootScope.$new();
     MainCtrl = $controller('MainCtrl', {
@@ -44,12 +73,7 @@ describe('Controller: MainCtrl', function () {
   it('Search should return something on a valid string', function() {
     scope.query = 'cat';
     scope.search();
-    expect(scope.response).not.toEqual([]);
-  });
-
-  it('Search should return nothing on an invalid string', function() {
-    scope.query = '';
-    scope.search();
-    expect(scope.response).toEqual(undefined);
+    $httpBackend.flush();
+    expect(scope.response.length).toBe(3);
   });
 });
