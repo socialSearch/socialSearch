@@ -54,11 +54,8 @@ describe('GET /api/search', function() {
     request(app)
       .get('/')
       .expect(200)
-      .end(function(err, res) {
-        if (err) return done(err);
-        done();
-        });
-      });
+      done();
+    });
 
 
 });
