@@ -49,5 +49,17 @@ describe('GET /api/search', function() {
         });
       });
 
+  it('should send index.html', function(done) {
+    
+    request(app)
+      .get('/')
+      .expect(200)
+      .end(function(err, res) {
+        if (err) return done(err);
+        res.res.text.should.instanceof(String);
+        done();
+        });
+      });
+
 
 });
