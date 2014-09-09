@@ -1,5 +1,6 @@
 [![Coverage Status](https://coveralls.io/repos/socialSearch/socialSearch/badge.png)](https://coveralls.io/r/socialSearch/socialSearch)
 [![Build Status](https://travis-ci.org/socialSearch/socialSearch.svg?branch=master)](https://travis-ci.org/socialSearch/socialSearch)
+[![Stories in Ready](https://badge.waffle.io/socialSearch/socialSearch.svg?label=ready&title=Ready)](http://waffle.io/socialSearch/socialSearch)
 
 # socialSearch  
 
@@ -64,9 +65,9 @@ bower install
 
 ## Roadmap
 
-View the project roadmap [here](https://github.com/socialSearch/socialSearch/issues)
+View the project roadmap [here](http://waffle.io/socialSearch/socialSearch)
 
-[![Stories in Ready](https://badge.waffle.io/socialSearch/socialSearch.svg?label=ready&title=Ready)](http://waffle.io/socialSearch/socialSearch)
+
 
 
 ## Contributing
