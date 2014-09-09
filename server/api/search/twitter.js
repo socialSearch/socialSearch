@@ -46,7 +46,12 @@ getToken: function(){
     });
 },
 
-getTweets: function(search, callback){
+getTweets: function(search, callback, optionalToken){
+
+  if (optionalToken !== undefined){
+    twitterToken = optionalToken;
+    console.log(twitterToken, 'line 53 twitter.js')
+  }
 
   if ( !twitterToken ){
     module.exports.getToken()
@@ -62,10 +67,6 @@ getTweets: function(search, callback){
 },
 
 sendRequest : function(search, callback){
-
-  if ( twitterErrorCount > 5 ){
-    return;
-  }
 
   var options = {
       url: 'https://api.twitter.com/1.1/search/tweets.json?lang=en&q=' + search,
