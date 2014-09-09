@@ -10,7 +10,6 @@
 'use strict';
 
 var _ = require('lodash');
-var sample = require('./sampleData.js');
 var grab = require('./grab.js');
 var request = require('request');
 var twitter = require('./twitter.js');
