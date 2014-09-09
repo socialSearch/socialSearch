@@ -19,7 +19,6 @@ Deployed here http://socialsearchd.herokuapp.com
 1. [Usage](#Usage)
 1. [Requirements](#requirements)
 1. [Installing Dependencies](#installing-dependencies)
-1. [Team](#team)
 1. [Contributing](#contributing)
 
 ## Usage
