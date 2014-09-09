@@ -31,7 +31,7 @@ describe('Controller: MainCtrl', function () {
           'num_comments': 197,
           'score': 1207,
           'subreddit': 'cats',
-          'title': 'A year ago my cat was hit by a car.... this is him today.'
+          'title': 'A year ago my cat was hit by a car.... this is him today. Isn\'t this extremely sad? I miss him so much :C This has gotta be over 100 chars long.'
         }],
         twitter: [{
           'date': 'Tue Sep 09 19:11:34 +0000 2014',
