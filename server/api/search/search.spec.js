@@ -7,7 +7,7 @@ var grab = require('./grab.js');
 var result;
 
 describe('GET /api/search', function() {
-  this.timeout(5000);
+  this.timeout(10000);
 
   it('should respond with Object with each social media as keys', function(done) {
     request(app)
@@ -18,7 +18,6 @@ describe('GET /api/search', function() {
         result = res.body;
         result.should.be.instanceof(Object);
         result.should.have.keys('twitter', 'instagram', 'reddit');
-        console.log(process.env.INSTAGRAM_KEY);
         done();
       });
   });
@@ -37,6 +36,14 @@ describe('GET /api/search', function() {
     result.reddit[0].link.should.be.instanceof(String);
     done();
 
+  });
+
+  it('should handle Instagram error', function(done) {
+    
+    grab.instagram('dog', function (result){
+      result.should.have.keys('error');
+      done();
+    }, '1');
   });
 
   it('should respond with 404 when calling non existent route', function(done) {

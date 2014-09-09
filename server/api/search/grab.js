@@ -8,8 +8,12 @@ var instagramKey = process.env.INSTAGRAM_KEY;
 var instagramError = 0;
 var redditError = 0;
 
-exports.instagram = function(query, cb) {
+exports.instagram = function(query, cb, failure) {
   var storage = [];
+
+  if(failure){
+    instagramKey = failure;
+  }
 
   request('https://api.instagram.com/v1/tags/'+ query.split(" ").join("") +'/media/recent?client_id=' + instagramKey, function(error, response, result){
     
@@ -17,12 +21,12 @@ exports.instagram = function(query, cb) {
 
     //handling errors and retries
     if( parseResult.meta.hasOwnProperty('error_type') ){
-      console.log('instagram error', parseResult.meta);
       if(instagramError < 3){
         instagramError++;
         exports.instagram(query, cb);
         return
       } else {
+        console.log('instagram error', parseResult.meta);
         cb({'error': parseResult.meta});
         instagramError = 0;
         return
@@ -57,7 +61,6 @@ exports.reddit = function(query, cb) {
   request('http://www.reddit.com/search.json?q='+ query, function(error, response, result){
     //handling 504 errors sent back by reddit
     if(response.statusCode ===  504 && redditError < 3){
-      console.log('reddit 504 error');
       redditError++;
       exports.reddit(query, cb);
       return;
