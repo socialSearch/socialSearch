@@ -1,3 +1,4 @@
+/*jshint -W083 */
 'use strict';
 
 angular.module('socialSearchApp')
