@@ -7,7 +7,7 @@ var grab = require('./grab.js');
 var result;
 
 describe('GET /api/search', function() {
-  this.timeout(15000);
+  this.timeout(5000);
 
   it('should respond with Object with each social media as keys', function(done) {
     request(app)
@@ -18,6 +18,7 @@ describe('GET /api/search', function() {
         result = res.body;
         result.should.be.instanceof(Object);
         result.should.have.keys('twitter', 'instagram', 'reddit');
+        console.log(process.env.INSTAGRAM_KEY);
         done();
       });
   });

@@ -12,24 +12,26 @@ exports.instagram = function(query, cb) {
   var storage = [];
 
   request('https://api.instagram.com/v1/tags/'+ query.split(" ").join("") +'/media/recent?client_id=' + instagramKey, function(error, response, result){
-    //handling errors and retries
-    if(error && instagramError < 3){
-      console.log('instagram error', error);
-      instagramError++;
-      exports.instagram(query, cb);
-      return;
-    } else if (error && instagramError >= 3){
-      console.log('instagram error', error);
-      cb(error);
-      instagramError = 0;
-      return;
-    }
+    
+    var parseResult = JSON.parse(result);
 
+    //handling errors and retries
+    if( parseResult.meta.hasOwnProperty('error_type') ){
+      console.log('instagram error', parseResult.meta);
+      if(instagramError < 3){
+        instagramError++;
+        exports.instagram(query, cb);
+        return
+      } else {
+        cb({'error': parseResult.meta});
+        instagramError = 0;
+        return
+      }
+    }
     //resetting counter
     instagramError = 0;
 
-    //parsing the json string
-    var data = JSON.parse(result).data;
+    var data = parseResult.data;
 
     if( data ) {
       //grabing specific data from instagram
@@ -61,17 +63,6 @@ exports.reddit = function(query, cb) {
       return;
     } else if (response.statusCode ===  504 && redditError >= 3) {
       cb({'error': '504'});
-      redditError = 0;
-      return;
-    //handling other errors
-    } else if (error && redditError < 3) {
-      console.log('reddit error', error);
-      redditError++;
-      exports.reddit(query, cb);
-      return;
-    } else if ( error && redditError >= 3) {
-      console.log('reddit error', error);
-      cb(error);
       redditError = 0;
       return;
     }
