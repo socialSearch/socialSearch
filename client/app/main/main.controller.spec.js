@@ -6,8 +6,7 @@ describe('Controller: MainCtrl', function () {
   beforeEach(module('socialSearchApp'));
 
   var MainCtrl,
-      scope,
-      $httpBackend;
+      scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
@@ -30,9 +29,27 @@ describe('Controller: MainCtrl', function () {
     expect(scope.filtered).toEqual(['twitter', 'instagram']);
   });
 
+  it('Should add a unfiltered site', function () {
+    scope.filter('reddit');
+    scope.filter('reddit');
+    expect(scope.filtered).toEqual(['twitter', 'instagram', 'reddit']);
+  });
+
   it('Shuffle should return a different array', function () {
     var arr = [1, 2, 3, 4, 5];
     var ret = scope.shuffle(arr);
     expect(ret).not.toEqual([1,2,3,4,5]);
+  });
+
+  it('Search should return something on a valid string', function() {
+    scope.query = 'cat';
+    scope.search();
+    expect(scope.response).not.toEqual([]);
+  });
+
+  it('Search should return nothing on an invalid string', function() {
+    scope.query = '';
+    scope.search();
+    expect(scope.response).toEqual(undefined);
   });
 });
