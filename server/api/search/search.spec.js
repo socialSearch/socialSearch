@@ -7,7 +7,7 @@ var grab = require('./grab.js');
 var result;
 
 describe('GET /api/search', function() {
-  this.timeout(15000);
+  this.timeout(10000);
 
   it('should respond with Object with each social media as keys', function(done) {
     request(app)
@@ -38,6 +38,14 @@ describe('GET /api/search', function() {
 
   });
 
+  it('should handle Instagram error', function(done) {
+    
+    grab.instagram('dog', function (result){
+      result.should.have.keys('error');
+      done();
+    }, '1');
+  });
+
   it('should respond with 404 when calling non existent route', function(done) {
     
     request(app)
@@ -55,7 +63,6 @@ describe('GET /api/search', function() {
       .get('/')
       .expect(200)
       .end(function(err, res) {
-        if (err) return done(err);
         done();
         });
       });
