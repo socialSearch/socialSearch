@@ -50,7 +50,6 @@ getTweets: function(search, callback, optionalToken){
 
   if (optionalToken !== undefined){
     twitterToken = optionalToken;
-    console.log(twitterToken, 'line 53 twitter.js')
   }
 
   if ( !twitterToken ){
