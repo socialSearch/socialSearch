@@ -4,6 +4,7 @@
 # socialSearch  
 
 Beautifully search twitter, instagram, and facebook
+Deployed here http://socialsearchd.herokuapp.com
 
 ## Team
 
@@ -47,7 +48,6 @@ remote: 'git@heroku.com:socialsearchd.git'
 
 
 
-
 ## Requirements
 
 - Node 0.10.x
@@ -64,6 +64,7 @@ sudo npm install -g bower
 npm install
 bower install
 ```
+
 
 ### Roadmap
 
