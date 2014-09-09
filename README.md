@@ -66,6 +66,8 @@ bower install
 
 View the project roadmap [here](https://github.com/socialSearch/socialSearch/issues)
 
+[![Stories in Ready](https://badge.waffle.io/socialSearch/socialSearch.svg?label=ready&title=Ready)](http://waffle.io/socialSearch/socialSearch)
+
 
 ## Contributing
 
