@@ -13,7 +13,7 @@ describe('Controller: MainCtrl', function () {
   beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
     $httpBackend = _$httpBackend_;
     $httpBackend.expectGET('/api/search?q=cat')
-       .respond({
+      .respond({
         instagram: [{
           'date': '1410287870',
           'link': 'http://instagram.com/p/svC4XcH2-U/',
@@ -41,7 +41,7 @@ describe('Controller: MainCtrl', function () {
           'text': 'I\'m becoming less and less of a cat person by the day.',
           'user': 'katiiiiileeeee'
         }]
-       });
+      });
 
     scope = $rootScope.$new();
     MainCtrl = $controller('MainCtrl', {
@@ -73,12 +73,7 @@ describe('Controller: MainCtrl', function () {
   it('Search should return something on a valid string', function() {
     scope.query = 'cat';
     scope.search();
-    expect(scope.response).not.toEqual([]);
-  });
-
-  it('Search should return nothing on an invalid string', function() {
-    scope.query = '';
-    scope.search();
-    expect(scope.response).toEqual(undefined);
+    $httpBackend.flush();
+    expect(scope.response.length).toBe(3);
   });
 });
