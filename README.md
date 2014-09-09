@@ -16,9 +16,7 @@ Deployed here http://socialsearchd.herokuapp.com
 
 1. [Usage](#Usage)
 1. [Requirements](#requirements)
-1. [Development](#development)
-    1. [Installing Dependencies](#installing-dependencies)
-    1. [Tasks](#tasks)
+1. [Installing Dependencies](#installing-dependencies)
 1. [Team](#team)
 1. [Contributing](#contributing)
 
@@ -52,10 +50,8 @@ remote: 'git@heroku.com:socialsearchd.git'
 
 - Node 0.10.x
 
-## Development
 
-
-### Installing Dependencies
+## Installing Dependencies
 
 From within the root directory:
 
@@ -66,7 +62,7 @@ bower install
 ```
 
 
-### Roadmap
+## Roadmap
 
 View the project roadmap [here](https://github.com/socialSearch/socialSearch/issues)
 
