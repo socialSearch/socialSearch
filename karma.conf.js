@@ -8,16 +8,17 @@ module.exports = function(config) {
 
    reporters: ['progress', 'coverage'],
 
-  //      coverageReporter: {
-  //   type: 'lcov', // lcov or lcovonly are required for generating lcov.info files
-  //   dir: '.coverage/'
-  // },
+       coverageReporter: {
+    type: 'lcovonly', // lcov or lcovonly are required for generating lcov.info files
+    dir: 'coverage/karma'
+  },
 
     // testing framework to use (jasmine/mocha/qunit/...)
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine', 'mocha'],
 
     // list of files / patterns to load in the browser
     files: [
+
       'client/bower_components/jquery/dist/jquery.js',
       'client/bower_components/angular/angular.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
@@ -38,12 +39,18 @@ module.exports = function(config) {
       'client/components/**/*.jade',
       'client/app/**/*.html',
       'client/components/**/*.html'
+
     ],
 
     preprocessors: {
       '**/*.jade': 'ng-jade2js',
       '**/*.html': 'html2js',
       '**/*.coffee': 'coffee',
+      'client/app/*.js': 'coverage',
+      'client/app/main/main.js': 'coverage',
+      'client/app/main/main.controller.js': 'coverage',
+      // 'client/app/app.js': ['coverage'],
+      // 'client/components/**/*.js': ['coverage']
     },
 
     ngHtml2JsPreprocessor: {

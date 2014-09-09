@@ -7,8 +7,8 @@ before_script:
   - bower install
 # services: mongodb
 after_script: 
-  - istanbul cover ./node_modules/mocha/bin/_mocha server/api/**/ --report lcovonly -- -R spec
-  - istanbul cover ./node_modules/karma/bin/karma start && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+  - ./node_modules/karma/bin/karma start
+  - istanbul cover ./node_modules/mocha/bin/_mocha server/api/**/  && cat ./coverage/lcov.info ./coverage/karma/PhantomJS\ 1.9.7\ \(Mac\ OS\ X\)/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
 after_success:
   - git config --global user.email "caseyg1204@gmail.com"
   - git config --global user.name "Casey"
