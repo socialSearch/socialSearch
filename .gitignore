@@ -40,3 +40,4 @@ dist
 coverage
 .coverage
 /hidden
+lcov.info

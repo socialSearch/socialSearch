@@ -38,4 +38,27 @@ describe('GET /api/search', function() {
 
   });
 
+  it('should respond with 404 when calling non existent route', function(done) {
+    
+    request(app)
+      .get('/api/call')
+      .expect(404)
+      .end(function(err, res) {
+        if (err) return done(err);
+        done();
+        });
+      });
+
+  it('should send index.html', function(done) {
+    
+    request(app)
+      .get('/')
+      .expect(200)
+      .end(function(err, res) {
+        if (err) return done(err);
+        done();
+        });
+      });
+
+
 });
