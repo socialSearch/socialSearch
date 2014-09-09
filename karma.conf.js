@@ -6,9 +6,9 @@ module.exports = function(config) {
     // base path, that will be used to resolve files and exclude
     basePath: '',
 
-  //   reporters: ['coverage', 'coveralls'],
+   reporters: ['progress', 'coverage'],
 
-  //    coverageReporter: {
+  //      coverageReporter: {
   //   type: 'lcov', // lcov or lcovonly are required for generating lcov.info files
   //   dir: '.coverage/'
   // },
@@ -82,6 +82,6 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: false
+    singleRun: true
   });
 };
