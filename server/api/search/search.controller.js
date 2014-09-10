@@ -21,7 +21,6 @@ exports.index = function(req, res) {
 
   //our data
   var data = {};
-  // data.twitter = sample.tweets;
 
   //our toggle
   var toggle = {};
@@ -29,6 +28,7 @@ exports.index = function(req, res) {
   toggle.instagram = false;
   toggle.reddit = false;
 
+  //checks if all data have been received
   var checkToggle = function(){
     if(toggle.twitter === true && toggle.instagram === true && toggle.reddit === true){
       if (req.query.hasOwnProperty('callback')){
@@ -54,6 +54,7 @@ exports.index = function(req, res) {
     checkToggle();
   });
 
+  //grabbing twitter data
   twitter.getTweets(query, function(result){
     data.twitter = result;
     toggle.twitter = true;

@@ -11,6 +11,8 @@ var redditError = 0;
 exports.instagram = function(query, cb, failure) {
   var storage = [];
 
+  //this extra parameter is to test what happens if a failure occurs
+  //we pass in a third variable within our test which will change the key
   if(failure){
     instagramKey = failure;
   }
@@ -72,10 +74,8 @@ exports.reddit = function(query, cb) {
 
     //resetting counter
     redditError = 0;
-    // console.log('reddit statuscode', response.statusCode );
 
-    //parsing the json string
-    // console.log(JSON.parse(result).data.children );
+    //parsing the json data
     var data = JSON.parse(result).data.children;
 
     if( data ) {
