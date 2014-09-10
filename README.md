@@ -42,6 +42,9 @@ Add your information to lines 12 and 13
 Add your remote heroku git repo to line 385
 remote: 'git@heroku.com:socialsearchd.git'
 
+<code> grunt serve </code> will run the app locally
+<code> grunt test </code> will run the tests locally
+
 
 
 
