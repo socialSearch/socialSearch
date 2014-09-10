@@ -7,7 +7,7 @@ var grab = require('./grab.js');
 var result;
 
 describe('GET /api/search', function() {
-  this.timeout(15000);
+  this.timeout(20000);
 
   it('should respond with Object with each social media as keys', function(done) {
     request(app)
