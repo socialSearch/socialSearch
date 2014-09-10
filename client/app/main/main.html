@@ -109,7 +109,7 @@
       $('h1').css('font-size', '35px');
       $('.r-info').css('font-size', '11px');
       $('.reddit-box').width($(window).width() - 25);
-    } else if ($(document).width() <= 480 && $(document).width() > 320) {
+    } else if ($(window).width() <= 480 && $(window).width() > 320) {
       $('h1').css('font-size', '45px');
       $('.reddit-box').width($(window).width() - 25);
       $('.reddit-box').css('font-size', '14px');
@@ -119,7 +119,7 @@
     }
     
     $(window).resize(function() {
-      if ($(document).width() <= 480) {
+      if ($(window).width() <= 480) {
         $('.reddit-box').width($(window).width() - 25);
       } else {
         $('r-holder').removeAttr('style');
