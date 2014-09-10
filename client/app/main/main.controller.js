@@ -94,8 +94,6 @@ angular.module('socialSearchApp')
       var search = '/api/search?q=' + q;
       
       $http.get(search).success(function(data) {
-
-        console.log(data);
         var res = [];
 
         for (var key in data) {
