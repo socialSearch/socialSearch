@@ -19,6 +19,7 @@
   </div>
 </header>
 
+<!-- The div that contains the filter buttons, slides up and down apon clicking <div id="filter"> -->
 <div id="filter-buttons">
   <div id="buttons">
     <button ng-click="filter('twitter')" id="twitter-button" type="button" class="btn btn-default active"><b>Twitter</b></button>
@@ -31,6 +32,7 @@
   <div id="filter-text">filter</div>
 </div>
 
+<!-- Shown when search is initially called and removed when the boxes are rendered -->
 <div id="loading">
   <div id="loading-text">
     <b>. . Loading . .</b>
@@ -39,6 +41,7 @@
 
 <div class="cont-media">
   <div ng-repeat="post in response">
+    <!-- Twitter Box -->
     <div class="tweet-box" ng-if="post.loc === 'twitter'">
       <blockquote class="twitter-tweet" data-conversation="none" lang="en">
         <p>{{post.text}}</p>
@@ -49,7 +52,7 @@
         <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
     </div>
-
+    <!-- Instagram Box -->
     <div class="insta-box" ng-if="post.loc === 'instagram'">
       <div class="i-head">
         <img src="{{post.proPic}}" class="prof-pic">
@@ -63,6 +66,7 @@
       </div>
     </div>
 
+    <!-- Reddit Box -->
     <div class='reddit-box' ng-if="post.loc === 'reddit'">
       <img src="/assets/images/reddit.png" class="r-logo r-float">
       <div class="r-holder">
@@ -98,8 +102,10 @@
   'use strict';
 
   $(document).ready(function() {
+    // Hides loading text
     $('#loading-text').hide();
 
+    // Changes font size of various things and width of reddit box according to the screen
     if ($(window).width() <= 320) {
       if ($(window).width() <= 305) {
         $('.reddit-box').css('font-size', '9px');
@@ -118,6 +124,7 @@
       $('#filter-buttons').addClass('width-buttons');
     }
     
+    // Changes width of reddit box apon width change (NOTE: not a needed function)
     $(window).resize(function() {
       if ($(window).width() <= 480) {
         $('.reddit-box').width($(window).width() - 25);
@@ -127,6 +134,7 @@
       }
     });
 
+    // Shows the filter buttons when clicking the filter tab
     $('#filter').click(function () {
       if ($('#filter').css('top').substr(0,3) < 0) {
         $('#filter-buttons').animate({'top':'0px', 'z-index': 1}, 'slow');

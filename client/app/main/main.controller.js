@@ -3,6 +3,7 @@
 
 angular.module('socialSearchApp')
   .controller('MainCtrl', function ($scope, $http) {
+    // Assigns names to each media box so they can be easily referenced
     $scope.sites = {
       'twitter': '.tweet-box',
       'reddit': '.reddit-box',
@@ -10,6 +11,7 @@ angular.module('socialSearchApp')
 
     $scope.filtered = ['twitter', 'reddit', 'instagram'];
 
+    // Adds or removes from the above filtered array, also changes active state of filter buttons
     $scope.filter = function(site) {
       var i = $.inArray(site, $scope.filtered);
       var $button = $('#' + site + '-button');
@@ -25,6 +27,7 @@ angular.module('socialSearchApp')
       }
     };
 
+    // Function and hides all boxes and shows the ones that aren't filtered
     function loadFilters() {
       $('.tweet-box').hide();
       $('.reddit-box').hide();
@@ -34,6 +37,7 @@ angular.module('socialSearchApp')
       });
     }
 
+    // In array shuffle function (NOTE: Return is not needed as this will shuffle the input array)
     $scope.shuffle = function (array) {
       for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
@@ -44,8 +48,8 @@ angular.module('socialSearchApp')
       return array;
     };
 
+    // Transforms unix timestamp into a english format
     $scope.timeAgo = function(unixT) {
-
       var d = new Date();
       var nowTs = Math.floor(d.getTime()/1000);
       var seconds = nowTs-unixT;
@@ -72,7 +76,9 @@ angular.module('socialSearchApp')
       }
     };
 
-    /*
+    /* Commented out cause it is not needed.
+       The filter function removes the elements completely and they have to be reloaded.
+       .hide() just removes it from the view but it is still loaded.
     // Angular filter function
     $scope.siteFilter = function (site) {
       if ($scope.sites.length > 0) {
@@ -85,6 +91,7 @@ angular.module('socialSearchApp')
     };
     */
 
+    // Grabs a query from the scope (on the front page) and performs some operations on it to make it function with the backend.
     $scope.search = function() {
       $('#loading-text').slideToggle();
       $('.cont-media').hide();
@@ -109,6 +116,7 @@ angular.module('socialSearchApp')
             res.push(post);
           });
         }
+        // Used becuase twitter takes some time to render it's iframe format
         setTimeout(function () {
           loadFilters();
           $('#loading-text').slideToggle();

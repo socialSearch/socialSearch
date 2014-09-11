@@ -9,3 +9,4 @@ angular.module('socialSearchApp')
         controller: 'MainCtrl'
       });
   });
+  
